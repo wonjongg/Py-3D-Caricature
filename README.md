@@ -11,11 +11,11 @@
 🚀 **[2022/01/17]** Upload source code and example .obj files
 
 ## Requirements
-✔️ Python >= 3.6 
-✔️ [libigl python binding](https://libigl.github.io/libigl-python-bindings/) 
-✔️ [PyMesh](https://pymesh.readthedocs.io/en/latest/installation.html) (Please download the source and build it instead of conda install) 
-✔️ numpy 
-✔️ scipy 
+✔️ Python >= 3.6  
+✔️ [libigl python binding](https://libigl.github.io/libigl-python-bindings/)  
+✔️ [PyMesh](https://pymesh.readthedocs.io/en/latest/installation.html) (Please download the source and build it instead of conda install)  
+✔️ numpy  
+✔️ scipy  
 ✔️ click  
 
 
