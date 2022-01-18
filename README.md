@@ -43,4 +43,4 @@ This software is being made available under the terms in the [LICENSE](LICENSE) 
 Any exemptions to these terms require a license from the Pohang University of Science and Technology.
 
 ## Credits
-❤️ This code is based on [the unofficial C++ implementation of the paper](https://github.com/NVlabs/stylegan2)
+❤️ This code is based on [the unofficial C++ implementation of the paper](https://github.com/posgraph/coupe.computational-caricaturization)
