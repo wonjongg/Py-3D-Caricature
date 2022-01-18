@@ -12,9 +12,9 @@
 
 ## Requirements
 ✔️ Python >= 3.6  
-✔️ [libigl python binding](https://libigl.github.io/libigl-python-bindings/)
-✔️ [PyMesh](https://pymesh.readthedocs.io/en/latest/installation.html) (Please download the source and build it instead of conda install)
-✔️ numpy 
+✔️ [libigl python binding](https://libigl.github.io/libigl-python-bindings/)  
+✔️ [PyMesh](https://pymesh.readthedocs.io/en/latest/installation.html) (Please download the source and build it instead of conda install)  
+✔️ numpy  
 ✔️ scipy  
 ✔️ click  
 
@@ -43,4 +43,4 @@ This software is being made available under the terms in the [LICENSE](LICENSE) 
 Any exemptions to these terms require a license from the Pohang University of Science and Technology.
 
 ## Credits
-❤️ This code is based on [the unofficial C++ implementation of the paper](https://github.com/NVlabs/stylegan2)
+❤️ This code is based on [the unofficial C++ implementation of the paper](https://github.com/posgraph/coupe.computational-caricaturization)
