@@ -31,7 +31,15 @@ python caricaturize.py --outdir=./ --ref=examples/ref.obj --src=examples/src.obj
 ```
 
 ## Results
+<div align="center">
+  
+|Exaggeration degree|Output mesh (front)|Output mesh (profile)|
+|:-:|:-:|:-:|
+|0.0|![img1](./assets/degree0.0_front.png)|![cari1](./assets/degree0.0_profile.png)|
+|0.3|![img2](./assets/degree0.3_front.png)|![cari2](./assets/degree0.3_profile.png)|
+|0.6|![img3](./assets/degree0.6_front.png)|![cari3](./assets/degree0.6_profile.png)|
 
+</div>
 
 
 ## Contact
