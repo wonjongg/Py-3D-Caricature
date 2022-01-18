@@ -54,7 +54,7 @@ def caricaturization_ref(v_src, f_src, v_ref, f_ref, beta=0.1):
 @click.option('--outdir', help='Where to save the result .obj file', required=True, metavar='DIR')
 @click.option('--ref', help='Path for a reference mesh .obj file', required=True, metavar='PATH')
 @click.option('--src', help='Path for a source mesh .obj file', required=True, metavar='PATH')
-@click.option('--beta', help='Exaggeration degree value [default: 0.1]', type=float)
+@click.option('--beta', help='Exaggeration degree value [default: 0.1]', type=float, default=0.1)
 @click.option('--meshplot', help='Enable to save .html file for mesh visualization by using meshplot', type=bool, metavar='BOOL')
 def main(outdir, ref, src, beta, meshplot):
     """
