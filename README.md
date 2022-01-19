@@ -1,6 +1,5 @@
 
-# Py-3D-Caricature
-
+# Py-3D-Caricature 
 
 📝 This repository contains the unofficial python implementation of the following paper:
 
@@ -57,3 +56,7 @@ Any exemptions to these terms require a license from the Pohang University of Sc
 
 ## Credits
 ❤️ This code is based on [the unofficial C++ implementation of the paper](https://github.com/posgraph/coupe.computational-caricaturization)
+
+<div align="center">
+<img src = "./assets/wonjong.svg" alt="signature"/>
+</div>
