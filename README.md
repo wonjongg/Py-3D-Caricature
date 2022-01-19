@@ -10,6 +10,8 @@
 ## Updates
 🚀 **[2022/01/17]** Upload source code and example .obj files
 
+**Notes:** Current implementation (2022/01/17) has some bugs in terms of boundary conditions. I will fix it as soon as possible.
+
 ## Requirements
 ✔️ Python >= 3.6  
 ✔️ [libigl python binding](https://libigl.github.io/libigl-python-bindings/)  
@@ -29,6 +31,7 @@ We provided some sample .obj files. Test on sample meshes:
 ```bash
 python caricaturize.py --outdir=./ --ref=examples/ref.obj --src=examples/src.obj --beta=0.6
 ```
+--beta is a hyper-parameter that determines how much a given shape will be exaggerated.
 
 ## Results
 <div align="center">
