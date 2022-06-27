@@ -9,8 +9,6 @@
 ## Updates
 🚀 **[2022/01/17]** Upload source code and example .obj files
 
-**Notes:** Current implementation (2022/01/17) has some bugs in terms of boundary conditions. I will fix it as soon as possible.
-
 ## Requirements
 ✔️ Python >= 3.6  
 ✔️ [libigl python binding](https://libigl.github.io/libigl-python-bindings/)  
