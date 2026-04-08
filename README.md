@@ -7,6 +7,7 @@
 > Matan Sela, Yonathan Aflalo, Ron Kimmel, CVIU 2015
 
 ## Updates
+🚀 **[2026/04/08]** Fix minor bugs with AI assistance
 🚀 **[2022/01/17]** Upload source code and example .obj files
 
 ## Requirements
@@ -54,7 +55,3 @@ Any exemptions to these terms require a license from the Pohang University of Sc
 
 ## Credits
 ❤️ This code is based on [the unofficial C++ implementation of the paper](https://github.com/posgraph/coupe.computational-caricaturization)
-
-<div align="center">
-<img src = "./assets/wonjong.svg" alt="signature"/>
-</div>
