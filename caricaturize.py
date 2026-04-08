@@ -12,13 +12,12 @@ import meshplot as mp
 #----------------------------------------------------------------------------
 
 def divergence(v, f):
-    l = igl.cotmatrix(v, f)
     g = igl.grad(v, f)
 
     d_area = igl.doublearea(v, f)
     t = sp.sparse.diags(np.hstack([d_area, d_area, d_area]) * 0.5)
 
-    return  -g.T.dot(t)
+    return -g.T.dot(t)
 
 #----------------------------------------------------------------------------
 
@@ -29,17 +28,19 @@ def caricaturization_ref(v_src, f_src, v_ref, f_ref, beta=0.1):
     # Right hand vector
     div = divergence(v_src, f_src)
     grad = igl.grad(v_src, f_src)
-    v1, v2, k1, k2 = igl.principal_curvature(v_src, f_src)
+    _, _, k1, k2 = igl.principal_curvature(v_src, f_src)
     K = k1 * k2
     K = igl.average_onto_faces(f_src, K)
     d_area_src = igl.doublearea(v_src, f_src)
     d_area_ref = igl.doublearea(v_ref, f_ref)
 
-    gamma = beta * np.log(d_area_src / d_area_ref)
-    scale_factor = np.power(np.abs(K), gamma)
+    area_ratio = np.where((d_area_ref > 0) & (d_area_src > 0), d_area_src / d_area_ref, 1.0)
+    gamma = beta * np.log(area_ratio)
+    absK = np.abs(K)
+    scale_factor = np.where(absK > 0, np.power(absK, gamma), 0.0)
     scale_factor = np.concatenate([scale_factor, scale_factor, scale_factor])
     scale_factor = np.stack([scale_factor, scale_factor, scale_factor], axis=1)
-    b = div * (scale_factor * (grad * v_src)) 
+    b = div @ (scale_factor * (grad @ v_src))
 
     # Solve
     solver = pm.SparseSolver.create('LDLT')
@@ -55,7 +56,7 @@ def caricaturization_ref(v_src, f_src, v_ref, f_ref, beta=0.1):
 @click.option('--ref', help='Path for a reference mesh .obj file', required=True, metavar='PATH')
 @click.option('--src', help='Path for a source mesh .obj file', required=True, metavar='PATH')
 @click.option('--beta', help='Exaggeration degree value [default: 0.1]', type=float, default=0.1)
-@click.option('--meshplot', help='Enable to save .html file for mesh visualization by using meshplot', type=bool, metavar='BOOL')
+@click.option('--meshplot', help='Enable to save .html file for mesh visualization by using meshplot', is_flag=True, default=False)
 def main(outdir, ref, src, beta, meshplot):
     """
     Exaggerate an input 3D face mesh using the techniques described in the paper:\n
@@ -83,12 +84,12 @@ def main(outdir, ref, src, beta, meshplot):
         if success:
             print(f'The output mesh is successfully saved at {os.path.join(outdir, "output.obj")}')
     except:
-        raise Exception('Saving th result mesh is failed.')
+        raise Exception('Saving the result mesh failed.')
 
     if meshplot:
         mp.offline()
-        mp.plot(v_src, f_src)
-        mp.plot(v_exag, f_src)
+        mp.plot(v_src, f_src, filename=os.path.join(outdir, 'source.html'))
+        mp.plot(v_exag, f_src, filename=os.path.join(outdir, 'output.html'))
 
 #----------------------------------------------------------------------------
 
