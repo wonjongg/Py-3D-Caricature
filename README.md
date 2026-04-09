@@ -3,17 +3,17 @@
 
 📝 This repository contains the unofficial python implementation of the following paper:
 
-> **[Computational Caricaturization of Surfaces](https://www.cs.technion.ac.il/~ron/PAPERS/Journal/SelaAflaloKimmel_CVIU2015.pdf)**<br>
-> Matan Sela, Yonathan Aflalo, Ron Kimmel, CVIU 2015
+> **[Computational Caricaturization of Surfaces](https://www.cs.technion.ac.il/wp-content/ron-kimmel/papers/Journal/SelaAflaloKimmel_CVIU2015.pdf)**<br>
+> Matan Sela, Yonathan Aflalo, Ron Kimmel (CVIU 2015)
 
 ## Updates
+🚀 **[2026/04/09]** Implement boundary conditions (Eq.30-31), area-weighted norm (Eq.30), and reference-free mode (Eq.20)
 🚀 **[2026/04/08]** Fix minor bugs with AI assistance
 🚀 **[2022/01/17]** Upload source code and example .obj files
 
 ## Requirements
 ✔️ Python >= 3.6  
 ✔️ [libigl python binding](https://libigl.github.io/libigl-python-bindings/)  
-✔️ [PyMesh](https://pymesh.readthedocs.io/en/latest/installation.html) (Please download the source and build it instead of conda install)  
 ✔️ numpy  
 ✔️ scipy  
 ✔️ click  
@@ -25,11 +25,29 @@ Check the basic usage:
 ```bash
 python caricaturize.py --help
 ```
-We provided some sample .obj files. Test on sample meshes:
+
+### Reference mode
+When a reference (average) mesh is provided, the exaggeration is driven by the area ratio between the source and the reference mesh (Eq.18-19 in the paper).
+`--beta` controls the exaggeration degree.
 ```bash
-python caricaturize.py --outdir=./ --ref=examples/ref.obj --src=examples/src.obj --beta=0.6
+python caricaturize.py --outdir=./ --src=examples/src.obj --ref=examples/ref.obj --beta=0.6
 ```
---beta is a hyper-parameter that determines how much a given shape will be exaggerated.
+
+### Reference-free mode
+When no reference mesh is provided, a constant exaggeration factor `--gamma` is used (Eq.20 in the paper).
+```bash
+python caricaturize.py --outdir=./ --src=examples/src.obj --gamma=0.5
+```
+
+### Options
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--outdir` | Output directory (required) | - |
+| `--src` | Source mesh .obj file (required) | - |
+| `--ref` | Reference mesh .obj file (optional) | None |
+| `--beta` | Exaggeration degree for reference mode | 0.1 |
+| `--gamma` | Constant exaggeration factor for reference-free mode | 0.5 |
+| `--meshplot` | Save .html visualization files | False |
 
 ## Results
 <div align="center">
